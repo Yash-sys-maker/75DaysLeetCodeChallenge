@@ -1,50 +1,56 @@
 class WordDictionary {
-    private TrieNode root;
-
   
+    private TrieNode root;
     private static class TrieNode {
-        TrieNode[] children = new TrieNode[26];
-        boolean isEndOfWord = false;
+        TrieNode[] children = new TrieNode[26]; 
+        boolean isEndOfWord = false; 
     }
-
+ 
     public WordDictionary() {
         root = new TrieNode();
     }
-
-
     public void addWord(String word) {
-        TrieNode node = root;
-        for (char c : word.toCharArray()) {
-            int index = c - 'a';
-            if (node.children[index] == null) {
-                node.children[index] = new TrieNode();
+        TrieNode curr = root;
+     
+        for (int i = 0; i < word.length(); i++) {
+            char ch = word.charAt(i);
+            int index = ch - 'a'; 
+            if (curr.children[index] == null) {
+                curr.children[index] = new TrieNode(); 
             }
-            node = node.children[index];
+            curr = curr.children[index]; 
         }
-        node.isEndOfWord = true;
+        curr.isEndOfWord = true; 
     }
 
-  
     public boolean search(String word) {
-        return searchHelper(word, 0, root);
+        return helper(word, 0, root);
     }
 
-    private boolean searchHelper(String word, int pos, TrieNode node) {
-        if (node == null) return false;
-        if (pos == word.length()) return node.isEndOfWord;
+    private boolean helper(String word, int pos, TrieNode curr) {
+        if (curr == null) return false;
 
-        char c = word.charAt(pos);
-        if (c == '.') {
-       
-            for (TrieNode child : node.children) {
-                if (child != null && searchHelper(word, pos + 1, child)) {
-                    return true;
+
+        if (pos == word.length()) {
+            return curr.isEndOfWord;
+        }
+
+        char ch = word.charAt(pos);
+
+    
+        if (ch == '.') {
+        
+            for (int i = 0; i < 26; i++) {
+                if (curr.children[i] != null) {
+                    if (helper(word, pos + 1, curr.children[i])) {
+                        return true;
+                    }
                 }
             }
             return false;
         } else {
-            int index = c - 'a';
-            return searchHelper(word, pos + 1, node.children[index]);
+            int index = ch - 'a';
+            return helper(word, pos + 1, curr.children[index]);
         }
     }
 }
