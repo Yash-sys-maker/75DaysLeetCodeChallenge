@@ -1,13 +1,13 @@
 class Solution {
 public:
     bool isPalindrome(string s) {
-        int i = 0;
+        int m = 0;
         int j = s.size()-1;
-        while (i < j){
-            char left = s[i];
+        while (m < j){
+            char left = s[m];
             char right = s[j];
             if (!isalnum(left)){
-                i++;
+                m++;
                 continue;
             }
             if (!isalnum(right)){
@@ -17,7 +17,7 @@ public:
             if (tolower(left) != tolower(right)){
                 return false;
             }
-            i++;
+            m++;
             j--;
         }
         return true;
