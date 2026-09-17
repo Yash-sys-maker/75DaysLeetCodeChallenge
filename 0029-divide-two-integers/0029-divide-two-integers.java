@@ -5,17 +5,17 @@ class Solution {
             return Integer.MAX_VALUE;
         }
 
-        long a = Math.abs((long) dividend);
-        long b = Math.abs((long) divisor);
+        long y = Math.abs((long) dividend);
+        long z = Math.abs((long) divisor);
         int result = 0;
 
-        while (a >= b) {
-            long temp = b, multiple = 1;
-            while (a >= (temp << 1)) {
+        while (y >= z) {
+            long temp = z, multiple = 1;
+            while (y >= (temp << 1)) {
                 temp <<= 1;
                 multiple <<= 1;
             }
-            a -= temp;
+            y -= temp;
             result += multiple;
         }
 
