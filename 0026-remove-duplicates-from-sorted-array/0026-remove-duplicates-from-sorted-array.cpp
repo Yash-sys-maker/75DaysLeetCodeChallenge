@@ -6,10 +6,10 @@ public:
             return 0;
         }
         int k = 0 ;
-        for (int j = 1 ; j < nums.size() ; j++){
-            if (nums[j] != nums[k]){
+        for (int m = 1 ; m < nums.size() ; m++){
+            if (nums[m] != nums[k]){
                 k++;
-                nums[k] = nums[j];
+                nums[k] = nums[m];
             }
         }
         return k+1;
