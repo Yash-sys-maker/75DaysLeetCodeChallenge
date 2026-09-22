@@ -4,16 +4,17 @@ class Solution {
         
         int start = 0, end = 0;
         
-        for (int i = 0; i < s.length(); i++) {
+        for (int j = 0; j < s.length(); j++) {
           
-            int len1 = expandFromCenter(s, i, i);
+            int len1 = expandFromCenter(s, j, j);
           
-            int len2 = expandFromCenter(s, i, i + 1);
+            int len2 = expandFromCenter(s, j, j + 1);
             
             int len = Math.max(len1, len2);
             
             if (len > end - start) {
-                start = i - (len - 1) / 2;
+                start = j - (len - 1) / 2;
+                int i = j;
                 end = i + len / 2;
             }
         }
