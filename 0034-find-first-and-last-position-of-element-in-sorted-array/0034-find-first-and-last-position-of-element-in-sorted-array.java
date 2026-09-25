@@ -12,7 +12,7 @@ class Solution {
         
     }
     int search(int[] nums, int target, boolean findstart){
-        int an = -1;
+        int a = -1;
         int start = 0;
         int end = nums.length - 1;
 
@@ -25,7 +25,7 @@ class Solution {
                 start = mid+1;
             }
             else {
-                an = mid;
+                a = mid;
                 if (findstart == true){
                     end = mid-1;
 
@@ -34,6 +34,6 @@ class Solution {
                 }
             }
         }
-        return an;
+        return a;
     }
 }
