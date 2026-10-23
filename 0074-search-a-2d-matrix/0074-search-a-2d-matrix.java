@@ -10,11 +10,11 @@ class Solution {
             int row = mid / n;
             int col = mid % n;
             
-            int midValue = matrix[row][col];
+            int myValue = matrix[row][col];
             
-            if (midValue == target) {
+            if (myValue == target) {
                 return true;
-            } else if (midValue < target) {
+            } else if (myValue <= target) {
                 low = mid + 1;
             } else {
                 high = mid - 1;
