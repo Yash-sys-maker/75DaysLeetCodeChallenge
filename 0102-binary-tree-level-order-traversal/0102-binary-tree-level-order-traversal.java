@@ -2,9 +2,9 @@ import java.util.*;
 
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> result = new ArrayList<>();
+        List<List<Integer>> esult = new ArrayList<>();
         
-        if (root == null) return result;  
+        if (root == null) return esult;  
         
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
@@ -21,9 +21,9 @@ class Solution {
                 if (node.right != null) queue.add(node.right);
             }
             
-            result.add(level);  
+            esult.add(level);  
         }
         
-        return result;
+        return esult;
     }
 }
